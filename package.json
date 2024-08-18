@@ -6,11 +6,19 @@
     "start": "next start"
   },
   "dependencies": {
+    "@svgr/webpack": "^8.1.0",
+    "date-fns": "^3.6.0",
     "next": "latest",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "resend": "^4.0.0"
   },
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/node": "22.4.0",
+    "@types/react": "18.3.3",
+    "typescript": "5.5.4"
   }
 }
