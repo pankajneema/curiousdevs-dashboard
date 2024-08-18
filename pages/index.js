@@ -2,7 +2,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { Resend } from 'resend';
 import { useEffect, useState } from 'react';
-import { EmailTemplate } from './email-template';
+//import { EmailTemplate } from './email-template';
 
 import { differenceInSeconds, formatDuration, intervalToDuration } from 'date-fns';
 
@@ -16,25 +16,27 @@ export default function Home() {
   const handleSubmit = async (e) => {
       e.preventDefault();
       console.log("EMAIL --> ",email);
-      try {
-        const { data, error } = await resend.emails.send({
-          from: 'Acme <onboarding@resend.dev>',
-          to: ['delivered@resend.dev'],
-          subject: 'Notify From Dashbaord',
-          react: EmailTemplate({ firstName: email }),
-        });
+      setMessage('Thank you for subscribing!');
+      setEmail(''); // clear the input field;
+      //try {
+      //  const { data, error } = await resend.emails.send({
+      //    from: 'Acme <onboarding@resend.dev>',
+      //    to: ['delivered@resend.dev'],
+      //    subject: 'Notify From Dashbaord',
+      //    react: EmailTemplate({ firstName: email }),
+      //  });
     
-        if (error) {
-          setMessage('Something went wrong. Please try again.');
-          setEmail('');
-        }
+      //  if (error) {
+      //    setMessage('Something went wrong. Please try again.');
+      //    setEmail('');
+      //  }
     
-        setMessage('Thank you for subscribing!');
-        setEmail(''); // clear the input field;
-      } catch (error) {
-        setMessage('Something went wrong. Please try again.');
-        setEmail('');     
-      }
+      //  setMessage('Thank you for subscribing!');
+      //  setEmail(''); // clear the input field;
+      //} catch (error) {
+      //  setMessage('Something went wrong. Please try again.');
+      //  setEmail('');     
+      //}
 
     };
 
