@@ -1,42 +1,11 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import { Resend } from 'resend';
 import { useEffect, useState } from 'react';
-import { EmailTemplate } from './email-template';
-
-import { differenceInSeconds, formatDuration, intervalToDuration } from 'date-fns';
 
 
 export default function Home() {
-  const resend = new Resend('re_RwAtpDX7_8XdnoB5GPFQcNgxaq7qeKTVp');
 
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
 
-  const handleSubmit = async (e) => {
-      e.preventDefault();
-      console.log("EMAIL --> ",email);
-      try {
-        const { data, error } = await resend.emails.send({
-          from: 'Acme <onboarding@resend.dev>',
-          to: ['delivered@resend.dev'],
-          subject: 'Notify From Dashbaord',
-          react: EmailTemplate({ firstName: email }),
-        });
-    
-        if (error) {
-          setMessage('Something went wrong. Please try again.');
-          setEmail('');
-        }
-    
-        setMessage('Thank you for subscribing!');
-        setEmail(''); // clear the input field;
-      } catch (error) {
-        setMessage('Something went wrong. Please try again.');
-        setEmail('');     
-      }
-
-    };
 
   const calculateTimeLeft = () => {
     const targetDate = new Date('2024-09-31T00:00:00'); // Set your target date here
@@ -68,6 +37,9 @@ export default function Home() {
   }, []);
 
 
+
+
+
   return (
     <div className={styles.container}>
       <Head>
@@ -76,57 +48,34 @@ export default function Home() {
       </Head>
 
       <main>
-        <img src="/logo-no-background.svg" alt="My Icon" className={styles.main_logo} />
+         <img src="/logo-no-background.svg" alt="My Icon" className={styles.main_logo} />
           <h1 className={styles.title}>
             Welcome to <a href="https://curiousdevs.vercel.app">Curiousdevs</a>
           </h1>
 
-          <p className={styles.description}>
-            <code>Just around the corner, ready to arrive — stay excited 🎯. </code>
-          </p>
+        <p className={styles.description}>
+          <code>Just around the corner, ready to arrive — stay connected 🎯. </code>
+        </p>
 
-          <div className={styles.grid}>
-            <a
-              href="https://curiousdevs.vercel.app"
-              className={styles.card}
-            >
-              <h3 className={styles.heading}>We are coming soon - hold on tight &rarr;</h3>
-                {Object.keys(timeLeft).length > 0 ? (
-                  <p>
-                    <span className={styles.timer}> {timeLeft.days}d </span> 
-                    <span className={styles.timer}> {timeLeft.hours}h </span> 
-                    <span className={styles.timer}> {timeLeft.minutes}m </span> 
-                    <span className={styles.timer}> {timeLeft.seconds}s</span>      
-                  </p>
-                ) : (
-                  <p className={styles.timer} >The event has started!</p>
-                )}
-            </a>
 
-            <a
-              className={styles.card}
-            >
-             <form onSubmit={handleSubmit}>
-              <input
-                  type="email"
-                  name="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className={styles.email}
-                />
-                <input
-                  type="submit"
-                  value="💁 Notify Me"
-                  className={styles.email}
-                />
-              </form>   
-              {message && <p>{message}</p>}
-            </a>
-        </div>
+        {/* <div className={styles.grid}> */}
+          <a href="https://curiousdevs.vercel.app" className={styles.card}>
+            <h3 className={styles.heading}>our moment is near - comming soon 🥺</h3>
+            {Object.keys(timeLeft).length > 0 ? (
+                <p  className={styles.timeDiv}>
+                  <span className={styles.timer} >  {timeLeft.days}d  </span>
+                  <span className={styles.timer} >  {timeLeft.hours}h  </span>
+                  <span className={styles.timer} >  {timeLeft.minutes}m  </span>
+                  <span className={styles.timer} >  {timeLeft.seconds}s  </span>
+                </p>
+              ) : (
+                <p className={styles.timer}>The event has started!</p>
+              )}
+          </a>
+        {/* </div> */}
       </main>
 
-      <footer>
+      {/* <footer>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
@@ -135,11 +84,11 @@ export default function Home() {
           Powered by{' '}
           <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
         </a>
-      </footer>
+      </footer> */}
 
       <style jsx>{`
         main {
-          padding: 4rem 0;
+          padding: 5rem 0;
           flex: 1;
           display: flex;
           flex-direction: column;
