@@ -60,7 +60,7 @@ export default function Home() {
 
         {/* <div className={styles.grid}> */}
           <a href="https://curiousdevs.vercel.app" className={styles.card}>
-            <h3 className={styles.heading}>our moment is near - comming soon 🥺</h3>
+            <h3 className={styles.heading}>our moment is near - Get ready 🥺</h3>
             {Object.keys(timeLeft).length > 0 ? (
                 <p  className={styles.timeDiv}>
                   <span className={styles.timer} >  {timeLeft.days}d  </span>
